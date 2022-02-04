@@ -16,12 +16,15 @@ This App is similar to linux `tee` and can be easily integrated to existing bash
  ```
  
  
- Before Using this Make Sure that Sandman App is Running . And WebServer is Started
- 
- You Can Start WebServer In Settings Page of Sandman App. By Default WebServer is always off
+
 
 
  # Usage
+ 
+  Before Using this Make Sure that Sandman App is Running . And WebServer is Started
+ 
+ You Can Start WebServer In Settings Page of Sandman App. By Default WebServer is always off
+ 
 
   - Gets all Inscope Data
 
