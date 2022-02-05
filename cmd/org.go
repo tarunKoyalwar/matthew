@@ -17,6 +17,7 @@ var org cobra.Command = cobra.Command{
 	Short: "Organization Checklist Page",
 	Long:  "Interacting with Organization Checklist page",
 	Run: func(cmd *cobra.Command, args []string) {
+		ch = stdin.GetStdinPipe()
 		if Proxy != "" {
 			restapi.Proxy = Proxy
 		}

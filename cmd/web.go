@@ -21,6 +21,7 @@ var web cobra.Command = cobra.Command{
 	Short: "Web Checklists Page",
 	Long:  "Interacting with Web Checklists page",
 	Run: func(cmd *cobra.Command, args []string) {
+		ch = stdin.GetStdinPipe()
 		if Proxy != "" {
 			restapi.Proxy = Proxy
 		}

@@ -15,7 +15,10 @@ var Pages cobra.Command = cobra.Command{
 	Short: "Interact with other pages",
 	Long:  "Interacting With Other Pages like in-scope etc",
 	Run: func(cmd *cobra.Command, args []string) {
+		ch = stdin.GetStdinPipe()
+		fmt.Println("pages called")
 		if Proxy != "" {
+			DebugPrintWithArgs("Using Proxy %v", Proxy)
 			restapi.Proxy = Proxy
 		}
 		var err error
@@ -24,7 +27,7 @@ var Pages cobra.Command = cobra.Command{
 		R.Alive()
 		if Pname != "" {
 			if Post {
-
+				DebugPrint("Sending Data to Server")
 				func(chx chan stdin.Receive) {
 					start := true
 					for {

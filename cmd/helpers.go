@@ -1,6 +1,10 @@
 package cmd
 
-import "github.com/tarunKoyalwar/matthew/stdin"
+import (
+	"fmt"
+
+	"github.com/tarunKoyalwar/matthew/stdin"
+)
 
 var ch chan stdin.Receive
 
@@ -14,5 +18,18 @@ func GetInput() {
 		ch = stdin.GetStdinPipe()
 		defer stdin.Wg.Wait()
 
+	}
+}
+
+func DebugPrint(text string) {
+	if Debug {
+		fmt.Println(text)
+	}
+}
+
+//Will Automatically Add '\n' For Convinience
+func DebugPrintWithArgs(format string, args ...interface{}) {
+	if Debug {
+		fmt.Printf(format+"\n", args...)
 	}
 }

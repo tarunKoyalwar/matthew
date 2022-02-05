@@ -12,7 +12,7 @@ var append bool
 var chunk int
 var Proxy string
 var Post bool
-
+var Debug bool
 var URL string
 var R *restapi.Restapi
 
@@ -36,6 +36,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVarP(&Proxy, "proxy", "x", "", "Proxy URL")
 	rootCmd.PersistentFlags().BoolVar(&Post, "post", false, "Post Data to CheckList Item")
 	rootCmd.PersistentFlags().StringVarP(&URL, "url", "u", "http://127.0.0.1:8088", "Rest API URL")
+	rootCmd.PersistentFlags().BoolVar(&Debug, "debug", false, "Debug")
 
 	rootCmd.AddCommand(&web)
 	rootCmd.AddCommand(&org)
