@@ -16,7 +16,7 @@ var Pages cobra.Command = cobra.Command{
 	Long:  "Interacting With Other Pages like in-scope etc",
 	Run: func(cmd *cobra.Command, args []string) {
 		ch = stdin.GetStdinPipe()
-		fmt.Println("pages called")
+		// fmt.Println("pages called")
 		if Proxy != "" {
 			DebugPrintWithArgs("Using Proxy %v", Proxy)
 			restapi.Proxy = Proxy
