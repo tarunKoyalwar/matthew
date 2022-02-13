@@ -26,7 +26,7 @@ var Pages cobra.Command = cobra.Command{
 		HandleError(err)
 		R.Alive()
 		if Pname != "" {
-			if Post {
+			if Post && file == "" {
 				DebugPrint("Sending Data to Server")
 				func(chx chan stdin.Receive) {
 					start := true
@@ -49,6 +49,11 @@ var Pages cobra.Command = cobra.Command{
 					R.SavetoDB()
 				}(ch)
 
+			} else if Post && file != "" {
+				dat := GetFileData()
+				R.PostPage(Pname, dat, append)
+				R.SavetoDB()
+				fmt.Printf("Data updated to server from %v\n", file)
 			} else {
 				dat, err := R.GetPage(Pname)
 				HandleError(err)

@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"io/ioutil"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -15,6 +16,7 @@ var Post bool
 var Debug bool
 var URL string
 var R *restapi.Restapi
+var file string
 
 var rootCmd = &cobra.Command{
 	Use:               "matthew",
@@ -37,6 +39,7 @@ func init() {
 	rootCmd.PersistentFlags().BoolVar(&Post, "post", false, "Post Data to CheckList Item")
 	rootCmd.PersistentFlags().StringVarP(&URL, "url", "u", "http://127.0.0.1:8088", "Rest API URL")
 	rootCmd.PersistentFlags().BoolVar(&Debug, "debug", false, "Debug")
+	rootCmd.PersistentFlags().StringVar(&file, "file", "", "Read From File")
 
 	rootCmd.AddCommand(&web)
 	rootCmd.AddCommand(&org)
@@ -53,4 +56,12 @@ func HandleError(er error) {
 func PrintAndHandleError(msg string, dat string, err error) {
 	HandleError(err)
 	fmt.Printf("%v :\n%v", msg, dat)
+}
+
+//Reads data from file
+func GetFileData() []byte {
+	dat, err := ioutil.ReadFile(file)
+	HandleError(err)
+
+	return dat
 }
