@@ -29,7 +29,7 @@ jobs:
       - name: Count Available Commits
         id: available_commits
         run: |
-          if ${{ contains(steps.last_release.outputs.RDATE,'Not Found') }}
+          if ${{ steps.last_release.outputs.RDATE == '' }}
           then
               echo "Defaulting to 1 since this is a First Release"
               echo COUNT=1 >> $GITHUB_OUTPUT
